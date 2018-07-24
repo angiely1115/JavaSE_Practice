@@ -13,13 +13,13 @@ class EatThread extends Thread{
     @Override
     public void run(){
         try {
-            semaphore.acquire(1);//获取一个许可，当然也可以调用acquire(int)，这样一个线程就能拿到多个许可
+            semaphore.acquire();//获取一个许可，当然也可以调用acquire(int)，这样一个线程就能拿到多个许可
             long eatTime=(long) (Math.random()*10);
             System.out.println(Thread.currentThread().getId()+" 正在吃饭");
             TimeUnit.SECONDS.sleep(eatTime);
             System.out.println(Thread.currentThread().getId()+" 已经吃完");
-            semaphore.release(1);//归还许可
             System.out.println("可用剩余可用许可："+semaphore.availablePermits());
+            semaphore.release();//归还许可
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

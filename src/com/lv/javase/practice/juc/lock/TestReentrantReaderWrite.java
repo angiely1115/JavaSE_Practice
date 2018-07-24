@@ -1,5 +1,6 @@
 package com.lv.javase.practice.juc.lock;
 
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -44,6 +45,7 @@ public class TestReentrantReaderWrite {
     }
 
     public static void main(String[] args) {
+//        CopyOnWriteArrayList
         TestReentrantReaderWrite urrw = new TestReentrantReaderWrite();
         Thread t1 = new Thread(new Runnable() {
             @Override
