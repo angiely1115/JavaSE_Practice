@@ -14,7 +14,7 @@ public class TestIntBuffer {
 		
         for (int i = 0; i < 6; ++i) {
             int j = (i + 1);  
-            // 将给定整数写入此缓冲区的当前位置，当前位置递增  
+            // 将给定整数写入此缓冲区的当前位置，当前位置递增
             buffer.put(j);
             System.out.println("position:"+buffer.position());
             System.out.println("capacity："+buffer.capacity());
@@ -26,9 +26,15 @@ public class TestIntBuffer {
         //我要开始操作了，如果你再往缓冲区写数据的话
         //不要再覆盖我固定状态以前的数据了 反转操作 写模式切换成读模式
         buffer.flip();
-  
-        // 查看在当前位置和限制位置之间是否有元素  
-        while (buffer.hasRemaining()) {  
+        System.out.println("flip后position:"+buffer.position());
+        System.out.println("flip后capacity："+buffer.capacity());
+        System.out.println("flip后limit:"+buffer.limit());
+        // 查看在当前位置和限制位置之间是否有元素
+        /*int j = buffer.get();
+        System.out.println("读模式后position:"+buffer.position());
+        System.out.println("读模式后capacity："+buffer.capacity());
+        System.out.println("读模式limit:"+buffer.limit());*/
+        while (buffer.hasRemaining()) {
             // 读取此缓冲区当前位置的整数，然后当前位置递增  
             int j = buffer.get();
             System.out.println("读模式后position:"+buffer.position());
@@ -36,5 +42,10 @@ public class TestIntBuffer {
             System.out.println("读模式limit:"+buffer.limit());
             System.out.print(j + "  ");  
         }
+        buffer.flip();
+        System.out.println("第二次flip**********************position回到初始化状态");
+        System.out.println("flip后position:"+buffer.position());
+        System.out.println("flip后capacity："+buffer.capacity());
+        System.out.println("flip后limit:"+buffer.limit());
 	}  
 }
