@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * 单线程只能连一个客户端
+ */
 public class BIOServer {
 	
 	ServerSocket server;
@@ -28,13 +31,13 @@ public class BIOServer {
 		while(true){
 			//虽然写了一个死循环，如果一直没有客户端连接的话，这里一直不会往下执行
 			Socket client = server.accept();//等待客户端连接，阻塞方法
-			
+			System.out.println("客户端已经链接");
 			//拿到输入流，也就是乡村公路
 			InputStream is = client.getInputStream();
 			
 			//缓冲区，数组而已
 			byte [] buff = new byte[1024];
-			int len = is.read(buff);
+			int len = is.read(buff); //也会阻塞
 			//只要一直有数据写入，len就会一直大于0
 			if(len > 0){
 				String msg = new String(buff,0,len);

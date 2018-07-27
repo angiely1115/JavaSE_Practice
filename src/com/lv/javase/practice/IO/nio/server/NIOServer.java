@@ -64,8 +64,9 @@ public class NIOServer {
     	//CPU工作频率可控了，是可控的固定值
     	while(true) {
     		
-    		//在轮询，我们服务大厅中，到底有多少个人正在排队
+    		//在轮询，我们服务大厅中，到底有多少个人正在排队 (如果没有会一直阻塞)
             int wait = selector.select();
+            System.out.println("wait..."+wait);
             if(wait == 0) continue; //如果没有人排队，进入下一次轮询
             
             //取号，默认给他分配个号码（排队号码）
@@ -112,8 +113,8 @@ public class NIOServer {
                 {
                     buff.flip();
                     content.append(charset.decode(buff));
-                    
                 }
+                System.out.println("客户端发送的内容:"+content.toString());
 //                System.out.println("从IP地址为：" + sc.getRemoteAddress() + "的获取到消息: " + content);
                 //将此对应的channel设置为准备下一次接受数据
                 key.interestOps(SelectionKey.OP_READ);
