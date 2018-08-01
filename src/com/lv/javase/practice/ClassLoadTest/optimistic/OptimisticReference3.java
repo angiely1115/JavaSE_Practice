@@ -9,6 +9,10 @@ public class OptimisticReference3 {
         static {
             System.out.println(Child.class.getSimpleName() + " is referred!");
         }
+        {
+            //生成实例的时候才会触发
+            System.out.println(Child.class.getSimpleName() + "普通代码块!");
+        }
     }
 
     public static void main(String[] args) {
