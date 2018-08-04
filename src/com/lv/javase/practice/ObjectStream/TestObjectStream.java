@@ -22,6 +22,7 @@ public class TestObjectStream {
         InputStream inputStream = new FileInputStream("a.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         System.out.println(objectInputStream.readObject());
+        objectInputStream.close();
     }
     @Test
     public void TestRead() throws Exception {
