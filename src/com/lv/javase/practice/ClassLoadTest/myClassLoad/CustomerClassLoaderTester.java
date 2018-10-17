@@ -2,6 +2,7 @@ package com.lv.javase.practice.ClassLoadTest.myClassLoad;
 
 import org.junit.jupiter.api.Test;
 
+import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -45,6 +46,7 @@ public class CustomerClassLoaderTester {
                       Thread.currentThread().setContextClassLoader(diskLoader);
                    // Class c = diskLoader.loadClass("com.lv.javase.practice.ClassLoadTest.myClassLoad.Children");
                     ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                    System.out.println("Thread ClassLoader:"+cl);
                     Class c = cl.loadClass("com.lv.javase.practice.ClassLoadTest.myClassLoad.Children");
                     // Class c = Class.forName("com.frank.test.SpeakTest");
                     System.out.println(c.getClassLoader().toString());

@@ -1,10 +1,8 @@
-/*
 package com.lv.javase.practice.ClassLoadTest.myClassLoad;
 
-*/
 /**
  * 自定义类加载器
- *//*
+ */
 
 public class Parent {
     protected static String CLASS_NAME;
@@ -32,4 +30,4 @@ public class Parent {
     public void say() {
         System.out.println("Parent My first class loader...");
     }
-}*/
+}

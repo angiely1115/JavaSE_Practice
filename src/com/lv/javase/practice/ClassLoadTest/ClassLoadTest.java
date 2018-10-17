@@ -1,5 +1,6 @@
 package com.lv.javase.practice.ClassLoadTest;
 
+import com.lv.javase.practice.ClassLoadTest.myClassLoad.CustomClassLoader;
 import com.lv.javase.practice.ClassLoadTest.myClassLoad.Parent2;
 import org.junit.jupiter.api.Test;
 import sun.misc.ClassLoaderUtil;
@@ -47,5 +48,26 @@ public class ClassLoadTest {
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 比较不同类加载器加载对象是否相等
+     * @throws ClassNotFoundException
+     */
+    @Test
+    public void testClassLoadeEquals() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        // 创建自定义类加载器
+        CustomClassLoader classLoader = new CustomClassLoader("D:\\resource\\workspace\\lvStudy\\out\\production\\JavaSE_Practice\\com\\lv\\javase\\practice\\ClassLoadTest"); // E://myclassloader//classpath
+        // 动态加载class文件到内存中（无连接）
+        Class<?> c = classLoader.loadClass("com.lv.javase.practice.ClassLoadTest.myClassLoad.Parent2");
+        Class c2 =  Class.forName("com.lv.javase.practice.ClassLoadTest.myClassLoad.Parent2");
+       Object object = c.newInstance();
+        System.out.println(CustomClassLoader.class.getClassLoader());
+        System.out.println(c.getClassLoader());
+        System.out.println(object.getClass());
+        System.out.println(object instanceof  Parent2);
+        c2 =  Class.forName("com.lv.javase.practice.ClassLoadTest.myClassLoad.Parent2");
+
+        System.out.println(Parent2.class==c2);
     }
 }

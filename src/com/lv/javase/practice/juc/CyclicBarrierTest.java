@@ -12,16 +12,18 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class CyclicBarrierTest {
 
-    public static void main(String[] args) {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(5, new Runnable() {
+    public static void main(String[] args) throws InterruptedException {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(5);
+           /*     , new Runnable() {
             @Override
             public void run() {
                 System.out.println("都到了，继续走");
             }
-        });
+        });*/
         CyclicBarrierTest cyclicBarriarTest = new CyclicBarrierTest();
         for(int i=0;i<15;i++){
             DogTread dogTread = cyclicBarriarTest.new DogTread(cyclicBarrier);
+//            Thread.sleep(1);
             new Thread(dogTread).start();
         }
     }
@@ -34,8 +36,9 @@ public class CyclicBarrierTest {
         }
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName()+"只狗狗在等待");
             try {
+//            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName()+"只狗狗在等待");
                 cyclicBarrier.await();
                 System.out.println("都到了"+Thread.currentThread().getName()+"狗狗又继续");
             } catch (InterruptedException e) {

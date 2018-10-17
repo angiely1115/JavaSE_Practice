@@ -1,4 +1,3 @@
-/*
 package com.lv.javase.practice.ClassLoadTest.myClassLoad;
 
 public class Children extends Parent {
@@ -22,4 +21,3 @@ public class Children extends Parent {
         System.out.println("Children My first class loader...");
     }
 }
-*/

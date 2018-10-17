@@ -58,14 +58,15 @@ public class ThreadTest {
                 System.out.println(Thread.currentThread().getName()+"sleep start");
                 TimeUnit.MILLISECONDS.sleep(300);
                 System.out.println(Thread.currentThread().getName()+"end");
-                //如果不获取结果sleep后不会执行
+
 //                return "completableFuture";
             } catch (InterruptedException e) {
                 e.printStackTrace();
 //                return "InterruptedException";
             }
         });
-        System.out.println("get:"+completableFuture.get());
+        //如果不获取结果sleep后不会执行
+       // System.out.println("get:"+completableFuture.get());
     }
 
     /**
