@@ -63,7 +63,7 @@ public class CollectionTest {
      */
     @Test
     public void listTest(){
-        List<String> arrays = new ArrayList<>(3);
+        ArrayList<String> arrays = new ArrayList<>(3);
         arrays.add("1");
         arrays.add("1");
         arrays.add("1");
