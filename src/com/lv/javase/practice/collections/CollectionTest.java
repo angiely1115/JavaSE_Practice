@@ -118,4 +118,10 @@ public class CollectionTest {
         CopyOnWriteArraySet copyOnWriteArraySet = new CopyOnWriteArraySet();
 
     }
+
+    @Test
+    public void collectionsSetMap(){
+        Map<String,Boolean> stringMap = new HashMap<>();
+        Collections.newSetFromMap(stringMap);
+    }
 }
