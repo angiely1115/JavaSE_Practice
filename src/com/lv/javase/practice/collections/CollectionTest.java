@@ -1,10 +1,12 @@
 package com.lv.javase.practice.collections;
 
+import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.stream.Stream;
 
 /**
  * @Author: lvrongzhuan
@@ -123,5 +125,29 @@ public class CollectionTest {
     public void collectionsSetMap(){
         Map<String,Boolean> stringMap = new HashMap<>();
         Collections.newSetFromMap(stringMap);
+    }
+
+    @Test
+    public void toArrayTest(){
+        List<String> strings = new ArrayList<>(3);
+        strings.add("1");
+        strings.add("2");
+        strings.add("d");
+        strings.add("e");
+        String[] strings1 = strings.toArray(new String[0]);
+        Stream.of(strings1).forEach(v-> System.out.println(v));
+       Optional<String> stringOptional = Stream.of(strings1).map(s->s.toUpperCase()).findAny();
+       String[] ss = Stream.of(strings1).flatMap(s->{
+           System.out.println("flatMap:"+s);
+          return Stream.of(getStrs(s));
+       }).toArray(String[]::new);
+        Stream.of(ss).forEach(v-> System.out.println("ss:"+v));
+
+
+
+    }
+
+    public String[] getStrs(String s){
+        return new String[]{s.toUpperCase()};
     }
 }
