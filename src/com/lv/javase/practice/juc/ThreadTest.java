@@ -107,7 +107,7 @@ public class ThreadTest {
             }
         }).start();
         //获取任务结果，如果没有完成有异常没有处理并且没有设置获取结果等待时间会一直阻塞等待
-        String result=completableFuture.get(4,TimeUnit.SECONDS);
+        String result=completableFuture.get(10,TimeUnit.SECONDS);
         System.out.println("计算结果:"+result);
     }
 
@@ -132,7 +132,7 @@ public class ThreadTest {
             //模拟执行耗时任务
             System.out.println("task1 doing..."+Thread.currentThread().getName());
             try {
-                Thread.sleep(3100);
+                Thread.sleep(2100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -144,20 +144,21 @@ public class ThreadTest {
             //模拟执行耗时任务
             System.out.println("task2 doing..."+Thread.currentThread().getName());
             try {
-                Thread.sleep(3200);
+                Thread.sleep(4200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //返回结果
             return "result2";
         });
-        CompletableFuture<Object> anyResult=CompletableFuture.anyOf(completableFuture1,completableFuture2);
-        System.out.println("第一个完成的任务结果:"+anyResult.get()+" "+Thread.currentThread().getName());
+        //CompletableFuture<Object> anyResult=CompletableFuture.anyOf(completableFuture1,completableFuture2);
+       // System.out.println("第一个完成的任务结果:"+anyResult.get()+" "+Thread.currentThread().getName());
 
         CompletableFuture<Void> allResult=CompletableFuture.allOf(completableFuture1,completableFuture2);
-
         //阻塞等待所有任务执行完成
         allResult.join();
+        System.out.println("第一个完成的任务结果:"+completableFuture1.get()+" "+Thread.currentThread().getName());
+        System.out.println("第二个完成的任务结果:"+completableFuture2.get()+" "+Thread.currentThread().getName());
         System.out.println("所有任务执行完成");
 
     }
@@ -191,7 +192,7 @@ public class ThreadTest {
         });
 
         //等第一个任务完成后，将任务结果传给参数result，执行后面的任务并返回一个代表任务的completableFuture
-        CompletableFuture<String> completableFuture2= completableFuture1.thenCompose(result->CompletableFuture.supplyAsync(()->{
+        CompletableFuture<String> completableFuture2= completableFuture1 .thenCompose(result->CompletableFuture.supplyAsync(()->{
             //模拟执行耗时任务
             System.out.println("task2 doing..."+Thread.currentThread().getName());
             try {

@@ -14,6 +14,7 @@ public class Son extends Father{
 
     public static void main(String[] args) {
         new Son();
+        new Girl();
         //是不是该类的子类 可以进进行转换的
         System.out.println(Girl.class.isAssignableFrom(Son.class));
     }

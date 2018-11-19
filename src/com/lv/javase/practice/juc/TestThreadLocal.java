@@ -17,6 +17,6 @@ public class TestThreadLocal {
         }
     };
     public static void main(String[] args) {
-
+        stringThreadLocal.remove();
     }
 }
