@@ -23,5 +23,8 @@ public class StringTest {
         System.out.println("s2==s3:"+(s2==s3));
         System.out.println("s1==s4:"+(s1==s4));
         s2.substring(2);
+
+        System.out.println("几号库："+8393990%12/4);
+        System.out.println("几号表："+8393990%12%4);
     }
 }

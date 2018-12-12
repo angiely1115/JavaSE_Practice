@@ -133,6 +133,7 @@ public class ThreadTest {
             System.out.println("task1 doing..."+Thread.currentThread().getName());
             try {
                 Thread.sleep(2100);
+                throw new RuntimeException("我要抛异常");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -143,11 +144,11 @@ public class ThreadTest {
         CompletableFuture<String> completableFuture2=CompletableFuture.supplyAsync(()->{
             //模拟执行耗时任务
             System.out.println("task2 doing..."+Thread.currentThread().getName());
-            try {
+           /* try {
                 Thread.sleep(4200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
             //返回结果
             return "result2";
         });

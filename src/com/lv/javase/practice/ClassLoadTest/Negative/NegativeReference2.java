@@ -2,7 +2,7 @@ package com.lv.javase.practice.ClassLoadTest.Negative;
 
 /**
  * 类加载被动引用之访问类定义的静态常量不会被初始化
- * 方法不是final常量会被初始
+ * 不是final常量会被初始化
  */
 public class NegativeReference2 {
     public static class Child {
