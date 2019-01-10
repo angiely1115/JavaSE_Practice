@@ -2,6 +2,10 @@ package com.lv.javase.practice.ClassLoadTest.Negative;
 
 /**
  * 类加载是被动引用-子类加载父类静态属性 子类不会被初始化
+ * 被动引用
+ * 1 引用父类的静态字段，只会引起父类的初始化，而不会引起子类的初始化。
+ * 2 定义类数组，不会引起类的初始化。
+ * 3 引用类的常量，不会引起类的初始化。
  */
 public class NegativeReference0 {
     public static class Parent {

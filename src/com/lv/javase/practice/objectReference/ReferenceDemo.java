@@ -62,9 +62,10 @@ public class ReferenceDemo {
         WeakReference weakReference = new WeakReference(obj);
 //        o=null;
         object = null;
-        obj = null;
+//        obj = null;
         System.gc();
         System.out.println(weakReference.get());
+        System.out.println(obj);
     }
 
 }
