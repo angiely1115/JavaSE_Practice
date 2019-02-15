@@ -13,6 +13,8 @@ public class ThreadLocalDemo {
 //    public static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
 
+    private static final Demo demo = new Demo();
+
     public static void main(String[] args) {
         ThreadLocal<String> threadLocal = new ThreadLocal<>();
         threadLocal.set("rr");
@@ -23,7 +25,12 @@ public class ThreadLocalDemo {
     }
     @Test
     public void set(){
-
+       int i=0;
+        while (i<10){
+            System.out.println(ThreadLocalDemo.demo);
+            i++;
+        }
+        String jsonS = "{\"name\":\"uu\"}" ;
 
     }
 
