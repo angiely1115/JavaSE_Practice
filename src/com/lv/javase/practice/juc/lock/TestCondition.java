@@ -1,6 +1,5 @@
 package com.lv.javase.practice.juc.lock;
 
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;

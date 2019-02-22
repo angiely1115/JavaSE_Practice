@@ -1,7 +1,5 @@
 package com.lv.javase.practice.JVM;
 
-import com.sun.deploy.util.StringUtils;
-import com.sun.media.sound.FFT;
 import org.junit.jupiter.api.Test;
 
 import java.lang.management.ManagementFactory;

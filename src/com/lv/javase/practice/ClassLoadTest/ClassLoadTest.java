@@ -3,7 +3,6 @@ package com.lv.javase.practice.ClassLoadTest;
 import com.lv.javase.practice.ClassLoadTest.myClassLoad.CustomClassLoader;
 import com.lv.javase.practice.ClassLoadTest.myClassLoad.Parent2;
 import org.junit.jupiter.api.Test;
-import sun.misc.ClassLoaderUtil;
 
 import java.util.Arrays;
 

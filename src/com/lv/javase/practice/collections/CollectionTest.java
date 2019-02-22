@@ -1,6 +1,5 @@
 package com.lv.javase.practice.collections;
 
-import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -34,6 +33,7 @@ public class CollectionTest {
          * 3.计算hash值对应数组的下标，如果没有值就直接存放 有值比较hash值 放入链表中
          */
         HashMap<String,String> stringMap = new HashMap<>();
+
         stringMap.put("1","吕荣砖");
         stringMap.put("2","赵雅芝");
         stringMap.put("3","彭雪梅");
@@ -147,6 +147,44 @@ public class CollectionTest {
 
     }
 
+    /**
+     * LinkedHashMap 的LRU算法
+     */
+    class MyLinkedHashMap<K,V> extends LinkedHashMap<K,V>{
+        public MyLinkedHashMap(int initialCapacity) {
+            super(initialCapacity);
+        }
+
+        public MyLinkedHashMap() {
+        }
+
+        /**
+         * 重新该方法 表示只能存储三个元素 删除最近最少使用的元素
+         * @param eldest
+         * @return
+         */
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+            return size()>3;
+        }
+
+    }
+    @Test
+    public void testLinkedHashMap(){
+        LinkedHashMap<Integer,Integer> linkedHashMap = new MyLinkedHashMap<>(3);
+        linkedHashMap.put(1,1);
+        linkedHashMap.put(2,2);
+        linkedHashMap.put(5,5);
+        /*
+        该算法的不足就是当你获取值或者重新设置值的时候 原先的位置并没有更新 还是会删除之前的
+        linkedHashMap.get(1);
+        linkedHashMap.put(1,1);
+        linkedHashMap.put(1,2);
+        */
+        linkedHashMap.put(3,3);
+        linkedHashMap.put(4,4);
+        System.out.println(linkedHashMap);
+    }
     public String[] getStrs(String s){
         return new String[]{s.toUpperCase()};
     }

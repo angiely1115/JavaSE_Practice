@@ -1,6 +1,5 @@
 package com.lv.javase.practice.array;
 
-import com.sun.deploy.util.ArrayUtil;
 
 /**
  * @Author: lvrongzhuan
